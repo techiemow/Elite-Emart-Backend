@@ -14,18 +14,32 @@ const Login = async (req, res) => {
         const passwordMatch = await bcrypt.compare(password, user.password);
         console.log(user);
         if (passwordMatch) {
-            const token = jwt.sign({ data: username }, "userkey", { expiresIn: '1h' });
-            res.cookie("token", token).status(201).json({
-                success: true,
-                username: user.username,
-                token: token,
-                message: "Login successfully"
-            });
-        } else {
-            return res.status(401).json({ success: false, message: "Incorrect password" });
-        }
-    } catch (error) {
-        res.status(500).json({ success: false, message: "Login failed" });
+            const tokenData = {
+                _id : user._id,
+                email : user.emailaddress,
+            }
+
+            console.log(tokenData);
+            const token = await jwt.sign(tokenData,"userkey", { expiresIn: 60 * 60 * 8 });
+
+            res.cookie("token",token).status(200).json({
+                message : "Login successfully",
+                data : token,
+                success : true,
+                error : false
+            })
+      
+
+        }else{
+            throw new Error("Please check Password")
+          }
+          
+    } catch(err){
+        res.json({
+            message : err.message || err  ,
+            error : true,
+            success : false,
+        })
     }
 };
 

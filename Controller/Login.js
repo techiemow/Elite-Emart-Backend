@@ -24,7 +24,7 @@ const Login = async (req, res) => {
 
             res.cookie("token",token).status(200).json({
                 message : "Login successfully",
-                data : token,
+                data : {token:token, user:user},
                 success : true,
                 error : false
             })

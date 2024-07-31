@@ -20,7 +20,7 @@ async function authToken(req,res,next){
                 console.log("error auth", err)
             }
              
-            console.log("decoded",decoded)
+            
             req.userId = decoded?._id
 
             next()

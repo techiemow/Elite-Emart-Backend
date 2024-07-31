@@ -22,6 +22,13 @@ const UserSchema = new Schema({
     phoneNumber:{
         type:Number,
         required:true,
+    },
+    role:{
+        type:String,
+        enum:["Admin", "User"],
+        default: "User"
+       
+
     }
 },{
     timestamps:true

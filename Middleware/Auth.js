@@ -1,39 +1,41 @@
-const jwt = require("jsonwebtoken");
-const { UserModel } = require("../Model/UserSignupmodel");
+const jwt = require('jsonwebtoken')
 
-const verifyUser = async (username) => {
-    const user = await UserModel.findOne({ username });
-    return !!user;
-};
+async function authToken(req,res,next){
+    try{
+        const token = req.cookies?.token
+       
 
-const AuthToken = async (req, res, next) => {
-    try {
-        if (req.path === "/Signup" || req.path.startsWith("/Login")) {
-            return next();
+    
+        if(!token){
+            return res.status(200).json({
+                message : "Please Login...!",
+                error : true,
+                success : false
+            })
         }
 
-        const token = req.headers.auth;
-        console.log(token);
-        if (!token) {
-            return res.status(400).send('Token missing');
-        }
+        jwt.verify(token, "userkey", function(err, decoded) {
+            
+            if(err){
+                console.log("error auth", err)
+            }
+             
+            console.log("decoded",decoded)
+            req.userId = decoded?._id
 
-        const tokenDecoded = jwt.verify(token, "userkey");
-        const username = tokenDecoded.data;
-
-        const userExists = await verifyUser(username);
-        if (userExists) {
-            next();
-        } else {
-            res.status(400).send('User verification failed');
-        }
-    } catch (err) {
-        res.status(401).json({
-            message: err.message || err,
-            error: true,
-            success: false
+            next()
         });
-    }
-};
 
-module.exports = AuthToken;
+
+    }catch(err){
+        res.status(400).json({
+            message : err.message || err,
+            data : [],
+            error : true,
+            success : false
+        })
+    }
+}
+
+
+module.exports = authToken

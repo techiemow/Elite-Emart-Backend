@@ -15,6 +15,7 @@ const ViaCategory = require("../Controller/Products/ProductsViaCategory");
 const productDetails = require("../Controller/Products/ProductDetails");
 const ShoppingCart = require("../Controller/ShoppingCart");
 const CountCartPerUser = require("../Controller/CountCartPerUser");
+const ViewCart = require("../Controller/ViewCart");
 
 
 
@@ -36,6 +37,7 @@ Router.get("/ProductDetails/:id",productDetails)
 // ENDPoints for Cart Datas
 Router.post("/AdditionToCart/:id",authToken,ShoppingCart)
 Router.get("/CountCartPerUser",authToken, CountCartPerUser)
+Router.get("/ViewCart",authToken, ViewCart)
 
 
 

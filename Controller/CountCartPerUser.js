@@ -8,7 +8,7 @@ const CountCartPerUser = async(req,res) =>{
             userId : userId
         })
 
-        console.log(count);
+        
         
         res.json({
             data : {

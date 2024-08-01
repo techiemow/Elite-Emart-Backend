@@ -10,7 +10,7 @@ const UserDetails = async (req, res) => {
                 success: false
             });
         }
-        console.log(user);
+       
 
         res.status(200).json({
             data: user,

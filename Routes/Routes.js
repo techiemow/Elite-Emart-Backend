@@ -13,6 +13,8 @@ const EditUploadedProducts = require("../Controller/Products/EditUploadProducts"
 const getCategoryProduct = require("../Controller/Products/OneProductPerCategory");
 const ViaCategory = require("../Controller/Products/ProductsViaCategory");
 const productDetails = require("../Controller/Products/ProductDetails");
+const ShoppingCart = require("../Controller/ShoppingCart");
+const CountCartPerUser = require("../Controller/CountCartPerUser");
 
 
 
@@ -20,7 +22,6 @@ const productDetails = require("../Controller/Products/ProductDetails");
 Router.post("/Signup", Signup);
 Router.get("/Login/:username/:password", Login);
 Router.get("/UserDetails",authToken, UserDetails)
-
 Router.get("/Users", authToken, Users )
 Router.put("/UpdateUser" ,authToken, UpdateUser)
 
@@ -28,11 +29,13 @@ Router.put("/UpdateUser" ,authToken, UpdateUser)
 Router.post("/UploadProduct",authToken,UploadProductController); 
 Router.get( "/GetProducts",Products);
 Router.put("/EditProducts",authToken,EditUploadedProducts)
-
 Router.get("/Categorylist",getCategoryProduct)
 Router.get("/ProductsViaCategory",ViaCategory )
 Router.get("/ProductDetails/:id",productDetails)
 
+// ENDPoints for Cart Datas
+Router.post("/AdditionToCart/:id",authToken,ShoppingCart)
+Router.get("/CountCartPerUser",authToken, CountCartPerUser)
 
 
 

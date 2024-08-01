@@ -12,6 +12,7 @@ const Products = require("../Controller/Products/AddedProducts");
 const EditUploadedProducts = require("../Controller/Products/EditUploadProducts");
 const getCategoryProduct = require("../Controller/Products/OneProductPerCategory");
 const ViaCategory = require("../Controller/Products/ProductsViaCategory");
+const productDetails = require("../Controller/Products/ProductDetails");
 
 
 
@@ -30,6 +31,7 @@ Router.put("/EditProducts",authToken,EditUploadedProducts)
 
 Router.get("/Categorylist",getCategoryProduct)
 Router.get("/ProductsViaCategory",ViaCategory )
+Router.get("/ProductDetails/:id",productDetails)
 
 
 

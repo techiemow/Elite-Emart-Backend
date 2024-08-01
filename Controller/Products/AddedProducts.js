@@ -5,7 +5,6 @@ const Products = async(req ,res) =>{
        
        const Allproducts = await ProductModel.find().sort({ createdAt: -1 });
 
-        console.log(Allproducts);
        res.json({
         data:Allproducts,
         message:"all products uploaded are found",

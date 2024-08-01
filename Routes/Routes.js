@@ -10,7 +10,8 @@ const UpdateUser = require("../Controller/UpdateUser");
 const UploadProductController = require("../Controller/Products/UploadProductController");
 const Products = require("../Controller/Products/AddedProducts");
 const EditUploadedProducts = require("../Controller/Products/EditUploadProducts");
-const getCategoryProduct = require("../Controller/Products/GetProductCategory");
+const getCategoryProduct = require("../Controller/Products/OneProductPerCategory");
+const ViaCategory = require("../Controller/Products/ProductsViaCategory");
 
 
 
@@ -28,6 +29,8 @@ Router.get( "/GetProducts",Products);
 Router.put("/EditProducts",authToken,EditUploadedProducts)
 
 Router.get("/Categorylist",getCategoryProduct)
+Router.get("/ProductsViaCategory",ViaCategory )
+
 
 
 

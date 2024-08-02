@@ -24,6 +24,8 @@ const CartUpdate = require("../Controller/Cart/CartUpdation");
 const CountCartPerUser = require("../Controller/Cart/CountCartPerUser");
 const ViewCart = require("../Controller/Cart/ViewCart");
 const DeleteProducts = require("../Controller/Cart/DeleteCartProducts");
+const Success = require("../Controller/Orders/Orders");
+const ViewOrder = require("../Controller/Orders/ViewOrderPage");
 
 Router.post("/Signup", SignUp);
 Router.get("/Login/:username/:password", Login);
@@ -51,6 +53,8 @@ Router.delete("/DeleteCartItem/:id",authToken,DeleteProducts )
 
 // Endpoints for Payment and Orders
 Router.post("/checkout", authToken, payment)
+Router.post("/payment/success",authToken, Success)
+Router.get( "/ViewOrder", authToken, ViewOrder)
 
 
 

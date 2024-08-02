@@ -16,6 +16,8 @@ const productDetails = require("../Controller/Products/ProductDetails");
 const ShoppingCart = require("../Controller/ShoppingCart");
 const CountCartPerUser = require("../Controller/CountCartPerUser");
 const ViewCart = require("../Controller/ViewCart");
+const CartUpdate = require("../Controller/CartUpdation");
+const DeleteProducts = require("../Controller/DeleteCartProducts");
 
 
 
@@ -38,7 +40,7 @@ Router.get("/ProductDetails/:id",productDetails)
 Router.post("/AdditionToCart/:id",authToken,ShoppingCart)
 Router.get("/CountCartPerUser",authToken, CountCartPerUser)
 Router.get("/ViewCart",authToken, ViewCart)
-
-
+Router.put("/UpdateCart",authToken, CartUpdate)
+Router.delete("/DeleteCartItem/:id",authToken,DeleteProducts )
 
 module.exports = { Router };

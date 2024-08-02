@@ -1,5 +1,4 @@
-const { UserModel } = require("../Model/UserSignupmodel");
-
+const { UserModel } = require("../../Model/UserSignupmodel");
 const UserDetails = async (req, res) => {
     try {
         const user = await UserModel.findById(req.userId);

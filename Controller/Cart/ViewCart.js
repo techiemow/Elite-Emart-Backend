@@ -1,4 +1,5 @@
-const CartModel = require("../Model/ShoppingCartModel");
+const CartModel = require("../../Model/ShoppingCartModel");
+
 
 const ViewCart = async(req,res) =>{
 try{

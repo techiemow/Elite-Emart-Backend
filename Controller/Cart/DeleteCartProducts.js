@@ -1,4 +1,6 @@
-const CartModel = require("../Model/ShoppingCartModel");
+const CartModel = require("../../Model/ShoppingCartModel");
+
+;
 
 const DeleteProducts = async(req,res) =>{
      try{

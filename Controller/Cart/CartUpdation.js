@@ -1,4 +1,6 @@
-const CartModel = require("../Model/ShoppingCartModel");
+const CartModel = require("../../Model/ShoppingCartModel");
+
+;
 
 const CartUpdate = async(req,res) =>{
     try{

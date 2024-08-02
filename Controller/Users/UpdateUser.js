@@ -1,5 +1,4 @@
-const { UserModel } = require("../Model/UserSignupmodel")
-
+const { UserModel } = require("../../Model/UserSignupmodel");
 const UpdateUser = async(req,res) =>{
 try{
     const sessionUser = req.userId

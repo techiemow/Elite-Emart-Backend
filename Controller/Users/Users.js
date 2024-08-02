@@ -1,5 +1,4 @@
-const { UserModel } = require("../Model/UserSignupmodel");
-
+const { UserModel } = require("../../Model/UserSignupmodel");
 const Users = async (req, res) => {
     try {
         console.log("User ID:", req.userId);

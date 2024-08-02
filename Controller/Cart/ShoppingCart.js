@@ -1,15 +1,16 @@
 const CartModel = require("../../Model/ShoppingCartModel");
 
+;
+
 const ShoppingCart = async (req, res) => {
     try {
         const { id: productId } = req.params;
         const userId = req.userId;
-           
-        console.log(productId,userId);
+
         
         const existingProduct = await CartModel.findOne({ productId, userId });
 
-        console.log(existingProduct);
+       
 
         if (existingProduct) {
             return res.json({

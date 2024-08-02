@@ -1,4 +1,5 @@
-const CartModel = require("../Model/ShoppingCartModel")
+const CartModel = require("../../Model/ShoppingCartModel");
+
 
 const CountCartPerUser = async(req,res) =>{
     try{

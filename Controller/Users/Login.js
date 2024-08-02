@@ -1,6 +1,7 @@
-const { UserModel } = require("../../Model/UserSignupmodel");
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { UserModel } = require("../../Model/UserSignupmodel");
 
 const Login = async (req, res) => {
     try {

@@ -1,12 +1,10 @@
 const express = require("express");
 const Router = express.Router();
 
-const Signup = require("../Controller/SignUp");
+
 const Login = require("../Controller/Users/Login");
 const authToken = require("../Middleware/Auth");
-const UserDetails = require("../Controller/UserDetails");
-const { Users } = require("../Controller/Users");
-const UpdateUser = require("../Controller/UpdateUser");
+
 const UploadProductController = require("../Controller/Products/UploadProductController");
 const Products = require("../Controller/Products/AddedProducts");
 const EditUploadedProducts = require("../Controller/Products/EditUploadProducts");
@@ -14,17 +12,20 @@ const getCategoryProduct = require("../Controller/Products/OneProductPerCategory
 const ViaCategory = require("../Controller/Products/ProductsViaCategory");
 const productDetails = require("../Controller/Products/ProductDetails");
 const ShoppingCart = require("../Controller/Cart/ShoppingCart");
-const CountCartPerUser = require("../Controller/CountCartPerUser");
-const ViewCart = require("../Controller/ViewCart");
-const CartUpdate = require("../Controller/CartUpdation");
-const DeleteProducts = require("../Controller/DeleteCartProducts");
+
 const searchproduct = require("../Controller/Products/SearchProduct");
 const filter = require("../Controller/Products/Filter");
+const payment = require("../Controller/Orders/Payment");
+const SignUp = require("../Controller/Users/SignUp");
+const UserDetails = require("../Controller/Users/UserDetails");
+const  {Users}= require("../Controller/Users/Users");
+const UpdateUser = require("../Controller/Users/UpdateUser");
+const CartUpdate = require("../Controller/Cart/CartUpdation");
+const CountCartPerUser = require("../Controller/Cart/CountCartPerUser");
+const ViewCart = require("../Controller/Cart/ViewCart");
+const DeleteProducts = require("../Controller/Cart/DeleteCartProducts");
 
-
-
-
-Router.post("/Signup", Signup);
+Router.post("/Signup", SignUp);
 Router.get("/Login/:username/:password", Login);
 Router.get("/UserDetails",authToken, UserDetails)
 Router.get("/Users", authToken, Users )
@@ -48,6 +49,8 @@ Router.get("/ViewCart",authToken, ViewCart)
 Router.put("/UpdateCart",authToken, CartUpdate)
 Router.delete("/DeleteCartItem/:id",authToken,DeleteProducts )
 
+// Endpoints for Payment and Orders
+Router.post("/checkout", authToken, payment)
 
 
 

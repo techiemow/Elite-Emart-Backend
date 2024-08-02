@@ -18,6 +18,8 @@ const CountCartPerUser = require("../Controller/CountCartPerUser");
 const ViewCart = require("../Controller/ViewCart");
 const CartUpdate = require("../Controller/CartUpdation");
 const DeleteProducts = require("../Controller/DeleteCartProducts");
+const searchproduct = require("../Controller/Products/SearchProduct");
+const filter = require("../Controller/Products/Filter");
 
 
 
@@ -35,6 +37,8 @@ Router.put("/EditProducts",authToken,EditUploadedProducts)
 Router.get("/Categorylist",getCategoryProduct)
 Router.get("/ProductsViaCategory",ViaCategory )
 Router.get("/ProductDetails/:id",productDetails)
+Router.get("/SearchProduct",searchproduct)
+
 
 // ENDPoints for Cart Datas
 Router.post("/AdditionToCart/:id",authToken,ShoppingCart)
@@ -42,5 +46,8 @@ Router.get("/CountCartPerUser",authToken, CountCartPerUser)
 Router.get("/ViewCart",authToken, ViewCart)
 Router.put("/UpdateCart",authToken, CartUpdate)
 Router.delete("/DeleteCartItem/:id",authToken,DeleteProducts )
+
+
+
 
 module.exports = { Router };

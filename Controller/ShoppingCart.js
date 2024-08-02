@@ -4,15 +4,19 @@ const ShoppingCart = async (req, res) => {
     try {
         const { id: productId } = req.params;
         const userId = req.userId;
-
+           
+        console.log(productId,userId);
+        
         const existingProduct = await CartModel.findOne({ productId, userId });
 
+        console.log(existingProduct);
+
         if (existingProduct) {
-            return res.status(400).json({
-                message: "Product is already in the cart",
-                error: true,
-                success: false
-            });
+            return res.json({
+                message : "Already exits in Add to cart",
+                success : false,
+                error : true
+            })
         }
 
         const newCartItem = new CartModel({

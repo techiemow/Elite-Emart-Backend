@@ -2,7 +2,7 @@ const express = require("express");
 const Router = express.Router();
 
 const Signup = require("../Controller/SignUp");
-const Login = require("../Controller/Login");
+const Login = require("../Controller/Users/Login");
 const authToken = require("../Middleware/Auth");
 const UserDetails = require("../Controller/UserDetails");
 const { Users } = require("../Controller/Users");
@@ -13,7 +13,7 @@ const EditUploadedProducts = require("../Controller/Products/EditUploadProducts"
 const getCategoryProduct = require("../Controller/Products/OneProductPerCategory");
 const ViaCategory = require("../Controller/Products/ProductsViaCategory");
 const productDetails = require("../Controller/Products/ProductDetails");
-const ShoppingCart = require("../Controller/ShoppingCart");
+const ShoppingCart = require("../Controller/Cart/ShoppingCart");
 const CountCartPerUser = require("../Controller/CountCartPerUser");
 const ViewCart = require("../Controller/ViewCart");
 const CartUpdate = require("../Controller/CartUpdation");
@@ -38,6 +38,7 @@ Router.get("/Categorylist",getCategoryProduct)
 Router.get("/ProductsViaCategory",ViaCategory )
 Router.get("/ProductDetails/:id",productDetails)
 Router.get("/SearchProduct",searchproduct)
+Router.post("/Category",filter)
 
 
 // ENDPoints for Cart Datas

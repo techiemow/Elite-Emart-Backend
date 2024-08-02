@@ -1,4 +1,5 @@
 const OrderModel = require("../../Model/OrderModel");
+const CartModel = require("../../Model/ShoppingCartModel");
 const { UserModel } = require("../../Model/UserSignupmodel");
 const razorpay = require("../../Razorpay")
 
@@ -37,8 +38,16 @@ const payment = async(req,res) =>{
     });
     
     const response =  await newOrder.save();
+    
+    if (response._id){
+        const deleteitem = await CartModel.deleteMany({userId:userId})
+        console.log(deleteitem);
+    }
+    
+  
 
-    console.log(response);
+
+
     res.json({
         order_id: order.id,
         amount: order.amount,

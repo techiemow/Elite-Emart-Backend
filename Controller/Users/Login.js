@@ -6,7 +6,7 @@ const { UserModel } = require("../../Model/UserSignupmodel");
 const Login = async (req, res) => {
     try {
         const { username, password } = req.params;
-
+        const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
         const user = await UserModel.findOne({ username });
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
@@ -20,15 +20,25 @@ const Login = async (req, res) => {
                 email : user.emailaddress,
             }
 
-          
-            const token = await jwt.sign(tokenData,"userkey", { expiresIn: 60 * 60 * 8 });
+            
+            const token = await jwt.sign(tokenData,JWT_SECRET_KEY, { expiresIn: 60 * 60 * 8 });
 
-            res.cookie("token",token).status(200).json({
-                message : "Login successfully",
-                data : {token:token, user:user},
-                success : true,
-                error : false
-            })
+            console.log(token);
+            
+            console.log(process.env.NODE_ENV);
+            
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+
+                sameSite: "None",
+            }).status(200).json({
+                message: "Login successfully",
+                data: { token, user },
+                success: true,
+                error: false
+            });
+            
       
 
         }else{

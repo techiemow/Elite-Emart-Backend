@@ -32,6 +32,17 @@ Router.get("/Login/:username/:password", Login);
 Router.get("/UserDetails",authToken, UserDetails)
 Router.get("/Users", authToken, Users )
 Router.put("/UpdateUser" ,authToken, UpdateUser)
+Router.post("/Logout", (req, res) => {
+    res.clearCookie("token", {
+        path: "/",
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "None",
+    });
+    res.json({
+        message: "Logged out successfully",
+        success: true,
+    });
+});
 
 
 Router.post("/UploadProduct",authToken,UploadProductController); 

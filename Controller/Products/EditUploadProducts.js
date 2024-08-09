@@ -12,7 +12,7 @@ const EditUploadedProducts = async(req ,res) =>{
        
         
         const updateProduct = await ProductModel.findByIdAndUpdate(_id,resBody)
-        console.log(updateProduct);
+      
         res.json({
             message : "Product update successfully",
             data : updateProduct,

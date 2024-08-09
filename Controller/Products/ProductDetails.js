@@ -3,11 +3,10 @@ const ProductModel = require("../../Model/productModel");
 const productDetails = async(req,res) => {
     try{
         const { id  } = req.params;
-        console.log(req.params);
-
+    
         const product =  await ProductModel.findById(id);
         
-        console.log(product);
+    
         res.json({
             data:product,
             message:"product details are found",

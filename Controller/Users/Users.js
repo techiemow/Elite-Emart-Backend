@@ -1,7 +1,7 @@
 const { UserModel } = require("../../Model/UserSignupmodel");
 const Users = async (req, res) => {
     try {
-        console.log("User ID:", req.userId);
+     
 
         const allUsers = await UserModel.find();
 
